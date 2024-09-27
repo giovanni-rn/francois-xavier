@@ -1,5 +1,7 @@
 // Créer une fonction qui renvoie le plus grand nombre
-// ...
+function max() {
+    return(1, 2);
+}
 
 // console.log(max(1, 2)) // 2
 // console.log(max(34, 9)) // 9
