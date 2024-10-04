@@ -50,14 +50,16 @@ console.log(divide(24, 6)) // 4
 
 // Créer une fonction firstChar() qui renvoie le premier caractère d'un string (indice: les string utilisent les indices, comme les listes)
 let firstChar = "Victor Hugo"
-function firstChar(str) {
-  return str[0]
-}
+firstChar = function(str) {
+  return str[0];
 
+
+}
 console.log(firstChar("Victor Hugo"))
 console.log(firstChar("L'age venant"))
 console.log(firstChar("Poulet")) // P
 console.log(firstChar("je code en javascript")) // j
+
 
 
 
@@ -92,18 +94,32 @@ console.log(videur(ageLucien)) // false
 
 
 // Créer une fonction glouton() qui renvoie false si la liste contient 5 éléments ou moins, et true si la taille est strictement supérieure à 5 (indice: utilise l'attribut "length")
-// ...
+function estGlouton(assiette)  {
+  if (assiette.length > 5) {
+    return true ;
+  }    else {
+      return false;
+      }
+    }
 
-assietteFrancois = ["schnitzel", "saucisses allemandes", "bretzels", "käsespätzle", "bouillon"]
-assietteOriano = ["poulet rôti", "cuisse de canard", "oeuf à la coque", "saumon fumé", "agneau (entier)", "un peu de salade quand même"]
-// console.log(glouton(assietteFrancois)) // false
-// console.log(glouton(assietteOriano)) // true
+
+const assietteFrancois = ["schnitzel", "saucisses allemandes", "bretzels", "käsespätzle", "bouillon"];
+const assietteOriano = ["poulet rôti", "cuisse de canard", "oeuf à la coque", "saumon fumé", "agneau (entier)", "un peu de salade quand même"];
+  console.log("Est-ce que Francois est un glouton ?", estGlouton(assietteFrancois)); // false
+  console.log("Est-ce que Oriano est un glouton ?", estGlouton(assietteOriano)); // true
 
 
 
 // Créer une fonction checkType() qui vérifie que le paramètre est bien un nombre (indice: utilise le mot-clé "typeof")
-// ...
 
+function checkType(param) {
+  return typeof param == "number";
+}
+
+console.log(checkType(476));        // true
+console.log(checkType(67 + 7 + 4)); // true
+console.log(checkType("Salut"));    // false
+console.log(checkType("82"));       // false
 // console.log(checkType(476)) // true
 // console.log(checkType(67 + 4)) // true
 // console.log(checkType("Salut !")) // false
