@@ -2,6 +2,7 @@
 
 - cd _chemin_ : Changer de dossier
 - CTRL+C / q : Interrompre le programme en cours
+- CTRL+Clic (sur un lien) : Suivre le lien
 
 # GIT
 
@@ -18,6 +19,8 @@
 - git pull _origin_ _main_ : Télécharger le projet
 
 - git branch -M _main_ : Renommer la branche actuelle
+
+- git reset --hard _origin_/_main_ : (!) Réinitialiser le code local pour correspondre au répertoire distant
 
 # Bibliothèques
 

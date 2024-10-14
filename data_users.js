@@ -1,6 +1,5 @@
 // Données
-
-export const users = [
+const users = [
   {
     id: 1,
     prenom: "Roye",
@@ -47,3 +46,5 @@ export const users = [
     mdp: "mc",
   },
 ];
+
+export default users; // Exportation de la "base de données"

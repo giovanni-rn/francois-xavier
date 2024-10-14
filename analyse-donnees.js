@@ -1,51 +1,4 @@
-/* DONNEES */
-const users = [
-    {
-        id: 1,
-        prenom: "Roye",
-        nom: "Schmidt",
-        status: "Pro",
-        pays: "Allemagne",
-        email: "roye@gmail.com",
-        mdp: "azerty1234"
-    },
-    {
-        id: 2,
-        prenom: "Jean",
-        nom: "Gabin",
-        status: "Free",
-        pays: "France",
-        email: "jean.gabin@gmail.com",
-        mdp: "aze_rtT'r34"
-    },
-    {
-        id: 3,
-        prenom: "Claude",
-        nom: "Brasseur",
-        status: "Pro",
-        pays: "France",
-        email: "claude.brasseur@gmail.com",
-        mdp: "claudeMDP45"
-    },
-    {
-        id: 4,
-        prenom: "Olaf",
-        nom: "Scholz",
-        status: "Pro",
-        pays: "Allemagne",
-        email: "oscholz@outlook.com",
-        mdp: "mot de passe"
-    },
-    {
-        id: 5,
-        prenom: "Maurice",
-        nom: "Chevalier",
-        status: "Pro",
-        pays: "France",
-        email: "maumau@gmail.com",
-        mdp: "mc"
-    },
-]
+import users from "./data_users.js"; // Importation de la "base de données"
 
 /* EXEMPLES */
 // Renvoie l'email de tout le monde
@@ -58,6 +11,7 @@ function getAllEmail(data) {
 }
 
 console.log("Email de tous :", getAllEmail(users));
+
 
 // Renvoie le nom des abonnés pro
 function getProName(data) {
@@ -72,6 +26,7 @@ function getProName(data) {
 
 console.log("Nom des pro :", getProName(users));
 
+
 // Renvoie le nom des abonnés pro vivant en France
 function getProFranceName(data) {
     const result = [] // Liste des utilisateurs qui correspondent aux critères
@@ -85,16 +40,58 @@ function getProFranceName(data) {
 
 console.log("Nom des français pro :", getProFranceName(users));
 
-/* A CODER */
 
+
+/* A CODER */
 // Renvoie le nom de tous les utilisateurs
-// ...
+function getAllName(users) {
+    const result = [];
+    for (const user of users) {
+        result.push(user.nom);
+    }
+    return result;
+}
+
+console.log("nom de tous les utilisateurs:", getAllName(users));
+
 
 // Renvoie l'email des utilisateurs non abonnés
-// ...
+function getNonProEmail(data) {
+    const result = [];
+    for (const user of data) {
+        if (user.status !== "Pro") {
+            result.push(user.email);
+        }
+    }
+    return result;
+}
+
+console.log("Email des utilisateurs non abonné:", getNonProEmail(users));
+
 
 // Renvoie le nom des abonnés ayant un mot de passe trop court ( < 8 caractères )
-// ...
+function getShortPasswordProName(data) {
+    const result = [];
+    for (const user of data) {
+        if (user.status === "Pro" && user.mdp.length < 8) {
+            result.push(user.nom);
+        }
+    }
+    return result;
+}
+
+console.log("Abonné ayant un mot de passe trop court :", getShortPasswordProName(users));
+
 
 // Renvoie l'identifiant des abonnés vivant en Allemagne
-// ...
+function getGermanProId(data) {
+    const result = [];
+    for (const user of data) {
+        if (user.status === "Pro" && user.pays === "Allemagne") {
+            result.push(user.id);
+        }
+    }
+    return result;
+}
+
+console.log("id des abonnés vivant en Allemagne:", getGermanProId(users)); // faut-il respecter la casse de id / ID ?
