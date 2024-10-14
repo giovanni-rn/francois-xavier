@@ -1,4 +1,4 @@
-import users from "./data_users.js"; // Importation de la "base de données"
+import users from "./data-users.js"; // Importation de la "base de données"
 
 /* EXEMPLES */
 // Renvoie l'email de tout le monde
