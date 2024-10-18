@@ -1,6 +1,13 @@
-const http = require("http");
+import { createServer } from "http";
 const port = 8000
-http.createServer(function (req, res) {
-    if (req.url === "/about") res.end("Site très pertinent:)")
-    else res.end("URL non définie")
-  }).listen(8000, { => console.log("Server listening on port", )})
+// "http://localhost:8000/about"
+
+createServer(function (req, res) {
+  if (req.url === "/about") {
+    const msg = "Site très pertinent :)"
+    res.end(msg)
+  }
+  else {
+    res.end("404 : URL non définie")
+  }
+}).listen(port, () => console.log("Server listening on port", port))
