@@ -21,10 +21,13 @@
 - git branch -M _main_ : Renommer la branche actuelle
 
 - git reset --hard _origin_/_main_ : (!) Réinitialiser le code local pour correspondre au répertoire distant
+- git reset _hash_ --hard : Restaurer un commit précis à partir de son ID (hash)
 
-# Bibliothèques
+# Bibliothèques NODEJS
 
-- fs : Accéder au système de fichiers sur NodeJS
+- http : Créer un serveur web
+- fs : Gérer le système de fichiers
+- path : Outils pour gérer les chemins d'accès aux fichiers
 
 # Carectères spéciaux JS
 

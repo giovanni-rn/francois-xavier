@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADT Precision Demo - Berlin Landmarks</title>
+    <style>
+      /* La balise <style> correspond au code CSS */
+      h1 {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <SOFT_FranKI/index_HTML_2_Karte.html> -->
+    <h1>Titre visible</h1>
+    <button id="alert">Clique ici !</button>
+    <script>
+      /* La balise <script> correspond au code JS */
+      /* Exemple de code JS */
+      console.log("Trouve-moi dans la console !");
+      const add = 5 + 5;
+      console.log(add);
+
+      /* Exemple d'interaction entre HTML et JS */
+      const alertBtn = document.querySelector("button#alert"); // Sélectionne la balise <btn> avec l'id "alert"
+      alertBtn.addEventListener("click", function () {
+        alert("Salut !"); // Quand je clique sur le bouton -> Afficher la fenêtre d'alerte
+        console.log("Vous avez cliqué sur le bouton."); // Puis, affiche le message dans la console
+      });
+    </script>
+  </body>
+</html>
