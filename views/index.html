@@ -8,14 +8,43 @@
       /* La balise <style> correspond au code CSS */
       h1 {
         color: blue;
-        font-family: "Courier New", Courier, monospace font-size 24px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 24px;
       }
     </style>
   </head>
   <body>
     <!-- <SOFT_FranKI/index_HTML_2_Karte.html> -->
-    <h1>Titre visible</h1>
+    <div>
+      <h1>Titre visible</h1>
+      <h2>Sous titre</h2>
+      <h3>Sous sous titre</h3>
+    </div>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic porro cumque
+      maiores amet voluptas minus cupiditate, libero modi ipsam optio?
+    </p>
     <button id="alert">Clique ici !</button>
+    <a href="404.html">Lien</a>
+    <form>
+      <label for="Email"
+        >Email
+        <input type="email" name="Email" id="" placeholder="Adresse email" />
+      </label>
+      <label for="Mot de passe">
+        Mot de passe
+        <input type="password" name="Mot de passe" id="" />
+      </label>
+      <label for="Jauge">
+        Jauge
+        <input type="range" name="Jauge" id="" />
+      </label>
+      <label for="Fichier">
+        Fichier
+        <input type="file" name="Fichier" id="" />
+      </label>
+    </form>
+
     <script>
       /* La balise <script> correspond au code JS */
       /* Exemple de code JS */

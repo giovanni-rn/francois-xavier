@@ -18,4 +18,4 @@ http.createServer(function (req, res) {
     res.writeHead(404, { "Content-Type": "text/html" }); // Définis les en-têtes (métadonnées) de la requête
     res.end(html404); // Envoie le contenu au navigateur du client
   }
-}).listen(port, () => console.log("Server listening on port", port))
+}).listen(port, () => console.log("Server listening on port : http://localhost:" + port))
