@@ -1,0 +1,2 @@
+sélecteur { attribut: valeur
+}
