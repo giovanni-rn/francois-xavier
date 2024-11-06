@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  text-align: center;
+  font-family: "Arial", Times, serif, Geneva, Tahoma, sans-serif;
+  color: lime;
+  background-color: gray;
+}
+
+#infos {
+  color: red;
+  background-color: rgb(38, 82, 118);
+  margin: 30px;
+  border: 5px solid black;
+  padding: 25px;
+  text-align: justify;
+}
+
+h5 {
+  margin: 5px 20px 10px 0;
+}
+
+img {
+  width: 100px;
+  height: auto;
+}
