@@ -16,5 +16,8 @@
     "url": "https://github.com/giovanni-rn/francois-xavier"
   },
   "author": "Oriano DEV et François-Xavier",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
 }
