@@ -27,9 +27,12 @@
 
 # Bibliothèques NODEJS
 
-- http : Créer un serveur web
-- fs : Gérer le système de fichiers
-- path : Outils pour gérer les chemins d'accès aux fichiers
+- npm (Node Package Manager) : Gestionnaire de paquets pour Node.js (donc pas une bibliothèque mais un programme)
+
+- node:http : Créer un serveur web
+- node:fs : Gérer le système de fichiers
+- node:path : Outils pour gérer les chemins d'accès aux fichiers
+- express : Framework minimaliste pour créer des applications web
 
 # Carectères spéciaux JS
 
