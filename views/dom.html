@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manipulation du DOM</title>
+    <style>
+      /* :root {
+        --color-primary: #007bff;
+        --color-secondary: #f8f9fa;
+        --color-tertiary: #343a40;
+        --default-size: 10px;
+      } */
+      form {
+        /* background-color: var(--color-primary); */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Manipulation du DOM</h1>
+    <button id="click">CLIQUE</button>
+    <form>
+      <label for="username">
+        Nom d'utilisateur
+        <input type="text" name="username" id="username" />
+      </label>
+      <label for="password">
+        Mot de passe
+        <input type="password" name="password" id="password" />
+      </label>
+      <label for="email">
+        Adresse email
+        <input type="email" name="email" id="email" />
+      </label>
+      <input type="button" id="login" value="Se connecter" />
+    </form>
+    <script>
+      // EXEMPLE avec "click"
+      // 1. Je sélectionne le bouton avec l'id "click"
+      const clickBtn = document.getElementById("click");
+      // 2. J'attache l'écouteur d'évènement : "Dès que l'utilisateur clique sur ce bouton..."
+      clickBtn.addEventListener("click", function () {
+        // 3. J'affiche dans la console (de DevTools), le message suivant
+        console.log("Bouton cliqué!");
+      });
+
+      // EXEMPLE avec "keyup"
+      // 1. Je sélectionne la balise <body>. Comme la méthode renvoie une liste, j'utilise l'indice.
+      const body = document.getElementsByTagName("body")[0];
+      // 2. J'attache l'écouteur d'évènement : "Dès que l'utilisateur appuie sur une touche quelconque..."
+      body.addEventListener("keyup", function (event) {
+        // 3. J'affiche dans la console (de DevTools), la valeur de cette touche
+        console.log(event.key);
+      });
+
+      // EXERCICE 1 : Faire en sorte que lorsque l'utilisateur sélectionne le champ pour saisir un mot de passe, la console affiche "Vous allez saisir un MDP."
+      // INDICE : L'évènement de sélection d'input est "focusin" (pour : « focus in »)
+
+      // EXERCICE 2 : Afficher dans la console les infos de l'utilisateur (username, password, email) lorsqu'il clique sur "Se connecter"
+      // INDICE : Chaque élément input possède une propriété (un attribut) "value" capable de renvoyer le texte que l'utilisateur y a saisi.
+    </script>
+  </body>
+</html>
