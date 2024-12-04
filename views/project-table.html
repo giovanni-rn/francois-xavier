@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Table</title>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      h2 {
+        text-transform: uppercase;
+      }
+      h3 {
+        margin: 30px 0 10px 0;
+      }
+      input[type="submit"] {
+        margin: 10px;
+        width: 150px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        gap: 5px;
+      }
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Tous vos projets</h2>
+
+    <section>
+      <h3>Ajouter un projet</h3>
+      <form class="projectForm">
+        <label for="city">
+          Ville
+          <input type="text" name="city" id="city" placeholder="ex: Berlin" />
+        </label>
+        <label for="address">
+          Adresse
+          <input
+            type="text"
+            name="address"
+            id="address"
+            placeholder="ex: 14 rue Arago"
+          />
+        </label>
+        <label for="date">
+          Ajouté le
+          <input type="date" name="date" id="date" />
+        </label>
+        <input type="submit" value="Ajouter" />
+      </form>
+    </section>
+
+    <section>
+      <h3>Projets existants</h3>
+      <table class="projectsTable">
+        <tr>
+          <th>Date</th>
+          <th>Ville</th>
+          <th>Adresse</th>
+        </tr>
+        <tr>
+          <td>22-09-11</td>
+          <td>Lyon</td>
+          <td>15 rue Napoléon</td>
+        </tr>
+        <tr>
+          <td>02-12-13</td>
+          <td>Paris</td>
+          <td>431 avenue Franklin Roosevelt</td>
+        </tr>
+      </table>
+    </section>
+
+    <script>
+      // PRINCIPE
+      // Le but est d'ajouter un projet à la liste à partir du formulaire.
+      // Observe attentivement le code HTML, sans avoir à le modifier.
+
+      // METHODES ET ATTRIBUTS DONT TU AURAS BESOIN
+      // event.preventDefault(); // Empêche le râfraichissement de la page après la validation du formulaire
+      const baliseSelectionnee = document.querySelector("#prenom"); // Sélectionne la balise grâce au sélecteur CSS. En l'occurence, l'id "prénom".
+      const baliseParent = document.createElement("ul"); // Créer une balise <ul>
+      const baliseEnfant = document.createElement("li"); // Créer une balise <li>
+      baliseEnfant.textContent; // Contient le texte dans la balise <li> (modifiable)
+      baliseParent.appendChild(baliseEnfant); // Ajoute la balise <li> au <ul>
+    </script>
+  </body>
+</html>
