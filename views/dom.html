@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manipulation du DOM</title>
+    <title>Manipulation du DOM (Document Object Model)</title>
     <style>
       /* :root {
         --color-primary: #007bff;
@@ -26,7 +26,12 @@
     <form>
       <label for="username">
         Nom d'utilisateur
-        <input type="text" name="username" id="username" />
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Nom d'utilisateur"
+        />
       </label>
       <label for="password">
         Mot de passe
@@ -36,6 +41,7 @@
         Adresse email
         <input type="email" name="email" id="email" />
       </label>
+      <input type="file" accept="image/*" multiple name="" id="" />
       <input type="button" id="login" value="Se connecter" />
     </form>
     <script>
@@ -60,8 +66,41 @@
       // EXERCICE 1 : Faire en sorte que lorsque l'utilisateur sélectionne le champ pour saisir un mot de passe, la console affiche "Vous allez saisir un MDP."
       // INDICE : L'évènement de sélection d'input est "focusin" (pour : « focus in »)
 
+      // 1. Je sélectionne l'input du mot de passe comme ds EXEMPLE avec "click" ci-dessus
+      const passwordInput = document.getElementById("password");
+      // 2. J'attache l'écouteur d'évènement "focusin" à cet input (information donnée dans l'énoncé...merci !)
+      passwordInput.addEventListener("focusin", function () {
+        // 3. J'affiche le message dans la console lorsque l'input est sélectionné, comme ds EXEMPLE avec "click" ci-dessus
+        console.log("Vous allez saisir un MDP.");
+      });
+
       // EXERCICE 2 : Afficher dans la console les infos de l'utilisateur (username, password, email) lorsqu'il clique sur "Se connecter"
       // INDICE : Chaque élément input possède une propriété (un attribut) "value" capable de renvoyer le texte que l'utilisateur y a saisi.
+
+      // EXERCICE 2
+      const loginButton = document.getElementById("login");
+      const usernameInput = document.getElementById("username");
+      // const passwordInput = document.getElementById("password"); //correction en "const passwordField.value"? le reste est inchangé
+      const emailInput = document.getElementById("email");
+
+      // Un essai de portée élargie de la fonction où plutôt méthode sur plusieurs variable d'un coup, c'est plus joli !
+      loginButton.addEventListener("click", function () {
+        // Récupération des valeurs des champs
+        const username = usernameInput.value;
+        const password = passwordInput.value; // correction en "const passwordField.value"?
+        const email = emailInput.value;
+
+        // Affichage des informations dans la console
+        console.log("Informations de connexion :");
+        console.log("Nom d'utilisateur :", username);
+        console.log("Mot de passe :", password);
+        console.log("Email :", email);
+      });
+
+      /* Un conflit où 2 erreurs apparaissent:
+      - 1 domReponse.html:78 Uncaught SyntaxError: Identifier 'passwordInput' has already been declared (at domReponse.html:78:13) = cela indique que passwordInput est déjà utilisé ds le code. je pourrai essayer de renommer la variable en "passwordField.value", puis je sélectionne le même champ de mot de passe "document.getElementById("password"); et pour récupérer la valeur saisie j'utilise à nouveau "passwordField.value"
+      - 2 la console évoque une erreur asynchrone ayant retourné true.
+      "Unchecked runtime.lastError: A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received". Je ne comprends rien aujourd'hui samedi*/
     </script>
   </body>
 </html>
