@@ -24,32 +24,35 @@ ELEMENTS DE BASE
 - <p> : paragraphe
 - <button> : bouton
 - <a> : pour faire un lien sur une autre page html où une page internet, intégrer à <p> permet d'écrire un texte qui génère le lien
-- <ul> :
-- <ol> :
-- <li> :
-- <hr> :
-- <br> :
+- <ul> : liste à puce (Unordered list) pour enlever les puces faire en CSS
+- <ol> : liste numérotée (Ordered list)
+- <li> : élément d'une liste (List Item)
+- <hr> : ligne horizontale (Horizontal Row)
+- <br> : saut de ligne (Line BReak)
 
 MULTIMEDIA
 
 - <img> : image
 - <iframe> : pour insérer une page web dans un document html (ex. lecteur YouTube, carte Google Earth)
-- <video> :
-- <canvas> :
+- <video> : vidéo
+- <canvas> : permet de dessinerà l'intérieur
 
 CONTENEURS
 
 - <div> : conteneur utilisé pour regrouper un contenu ex.du léopard
-- <header> :
-- <main> :
-- <section> :
-- <footer> :
+
+- <header> : tête de page (dans le body)
+- <nav> : barre de navigation (contient des liens)
+- <main> : partie principale de la page
+- <section> : partie de la page
+- <aside> : partie latérale de page (assez rare)
+- <footer> : pied de page
 
 FORMULAIRE
 
 - <form> : conteneur des input/label
 - <label> : pour nommer un champs
-- <input> :
+- <input> : champ de saisie (ou autre en fonction du type)
 
 ATTRIBUTS
 
