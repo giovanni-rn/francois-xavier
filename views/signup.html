@@ -18,7 +18,7 @@
   </head>
   <body>
     <h1>Créer un compte</h1>
-    <form>
+    <form id="signup-form">
       <label for="username">
         Nom d'utilisateur
         <input type="text" name="username" id="username" />
@@ -37,11 +37,21 @@
     <script>
       // ajouter l'évènement pour la validation
       document
-        .querySelector("")
-        .addEventListener("submit", function (event) {});
-      // récupérer les valeurs du formulaire
-      // stocker dans un dictionnaire
-      // envoyer le dictionnaire à l'API
+        .querySelector("#signup-form")
+        .addEventListener("submit", function (event) {
+          // récupérer les valeurs du formulaire
+          const username = document.querySelector("#username").value;
+          const password = document.querySelector("#password").value;
+          const email = document.querySelector("#email").value;
+
+          // stocker dans un dictionnaire
+          const userInfo = {};
+
+          // envoyer le dictionnaire à l'API
+        });
+
+      // Côté client (frontend, navigateur) : html, css, js pour la manipulation du dom
+      // Côté serveur (backend) : js avec nodejs, ou autres tels que python avec flask, ou bien java, etc.
     </script>
   </body>
 </html>

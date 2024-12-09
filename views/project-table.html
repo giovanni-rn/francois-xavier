@@ -39,8 +39,7 @@
   </head>
   <body>
     <h2>Tous vos projets</h2>
-    // formulaire contient trois champs : ville, adresse et date, ainsi qu'un
-    bouton "Ajouter"//
+    <!-- Formulaire contient trois champs : ville, adresse et date, ainsi qu'un bouton "Ajouter" -->
     <section>
       <h3>Ajouter un projet</h3>
       <form class="projectForm">
@@ -67,7 +66,7 @@
 
     <section>
       <h3>Projets existants</h3>
-      // Cette table a trois colonnes : Date, Ville et Adresse //
+      <!-- Cette table a trois colonnes : Date, Ville et Adresse -->
       <table class="projectsTable">
         <tr>
           <th>Date</th>
@@ -88,56 +87,60 @@
     </section>
 
     <script>
-          // PRINCIPE
-          // Le but est d'ajouter un projet à la liste à partir du formulaire en JS dans le HTML.
-          // Observe attentivement le code HTML, sans avoir à le modifier.
+      // PRINCIPE
+      // Le but est d'ajouter un projet à la liste à partir du formulaire en JS dans le HTML.
+      // Observe attentivement le code HTML, sans avoir à le modifier.
 
-          // METHODES ET ATTRIBUTS DONT TU AURAS BESOIN
-          // event.preventDefault(); // Empêche le râfraichissement de la page après la validation du formulaire
-          const baliseSelectionnee = document.querySelector("projectForm"); // Sélectionne la balise grâce au sélecteur CSS. En l'occurence, l'id "prénom".
-          //Attacher un écouteur//
-          form.addEventListener('submit', function(event)) {
-            event.preventDefault(); // Empêche le rafraîchissement de la page à ce moment?
-          //Récupérer les valeurs des champs du formulaire//
-          const date = document.querySelector('#date').value;
-          const city = document.querySelector('#city').value;
-          const address = document.querySelector('#address').value;
-          }
-          //Créer une nouvelle ligne//
-          const newRow = document.createElement('tr');
-          //Créer les cellules por la pour la nouvelle ligne et ajout des valeurs//
-          const dateCell = document.createElement('td');
-            dateCell.textContent = date;
+      // METHODES ET ATTRIBUTS DONT TU AURAS BESOIN
+      // event.preventDefault(); // Empêche le râfraichissement de la page après la validation du formulaire
+      const baliseSelectionnee = document.querySelector("#prenom"); // Sélectionne la balise grâce au sélecteur CSS. En l'occurence, l'id "prénom".
+      const baliseParent = document.createElement("ul"); // Créer une balise <ul>
+      const baliseEnfant = document.createElement("li"); // Créer une balise <li>
+      baliseEnfant.textContent; // Contient le texte dans la balise <li> (modifiable)
+      baliseParent.appendChild(baliseEnfant); // Ajoute la balise <li> au <ul>
 
-          const cityCell = document.createElement('td');
-            cityCell.textContent = city;
+      // FONCTION FINALE
+      const form = document.querySelector(".projectForm"); // camelCase
+      //Attacher un écouteur//
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Empêche le rafraîchissement de la page à ce moment?
+        //Récupérer les valeurs des champs du formulaire//
+        const date = document.querySelector("#date").value;
+        const city = document.querySelector("#city").value;
+        const address = document.querySelector("#address").value;
 
-          const addressCell = document.createElement('td');
-            addressCell.textContent = address;
-            //Comprends pas baliseParent et baliseEnfant, de plus erreur
-            //entre Table et Liste ?//
+        //Créer une nouvelle ligne//
+        const newRow = document.createElement("tr");
+        //Créer les cellules pour la nouvelle ligne et ajout des valeurs//
+        const dateCell = document.createElement("td");
+        dateCell.textContent = date;
 
-      //Ajout des cellules à la nouvelle ligne //
-          newRow.appendChild(dateCell);
-          newRow.appendChild(cityCell);
-          newRow.appendChild(addressCell);
+        const cityCell = document.createElement("td");
+        cityCell.textContent = city;
 
-          //Ajouter la nouvelle ligne à la Table (la baliseParent est document
-          //et Table est la baliseEnfant //
-          const table = document.querySelector('.projectsTable');
-          table.appendChild(newRow);
+        const addressCell = document.createElement("td");
+        addressCell.textContent = address;
+        //Comprends pas baliseParent et baliseEnfant, de plus erreur
+        //entre Table et Liste ?//
 
-          //Réinitialiser le formulaire?//
-          form.reset();
+        //Ajout des cellules à la nouvelle ligne //
+        newRow.appendChild(dateCell);
+        newRow.appendChild(cityCell);
+        newRow.appendChild(addressCell);
 
-          //Est-ce que ces lignes sont prévues pour une extension en Liste du Projet?//
-          // Comment intégrer ces concepts à la structure de la table dans le HTML?//
-          //Est-ce que cela à voir avec la création d'éléments DOM, ajout de texte où
-          //de contenu Texte ?//
-          const baliseParent = document.createElement("ul"); // Créer une balise <ul>
-          const baliseEnfant = document.createElement("li"); // Créer une balise <li>
-          baliseEnfant.textContent; // Contient le texte dans la balise <li> (modifiable)
-          baliseParent.appendChild(baliseEnfant); // Ajoute la balise <li> au <ul>
+        //Ajouter la nouvelle ligne à la Table (la baliseParent est document
+        //et Table est la baliseEnfant //
+        const table = document.querySelector(".projectsTable");
+        table.appendChild(newRow);
+
+        //Réinitialiser le formulaire?//
+        form.reset();
+      });
+
+      //Est-ce que ces lignes sont prévues pour une extension en Liste du Projet?//
+      // Comment intégrer ces concepts à la structure de la table dans le HTML?//
+      //Est-ce que cela à voir avec la création d'éléments DOM, ajout de texte où
+      //de contenu Texte ?//
     </script>
   </body>
 </html>
