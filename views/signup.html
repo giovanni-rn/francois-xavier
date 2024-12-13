@@ -44,10 +44,15 @@
           const password = document.querySelector("#password").value;
           const email = document.querySelector("#email").value;
 
-          // stocker dans un dictionnaire
-          const userInfo = {};
+          // stocker dans un dictionnaire (temporairement)
+          const userInfo = {
+            username: username,
+            pasword: password,
+            email: email,
+          };
 
           // envoyer le dictionnaire à l'API
+          fetch("http://localhost:3000/signup");
         });
 
       // Côté client (frontend, navigateur) : html, css, js pour la manipulation du dom
