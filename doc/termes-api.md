@@ -1,0 +1,2 @@
+- SIGNUP : inscription (nouveau compte)
+- SIGNIN/LOGIN : connexion (compte existant)
