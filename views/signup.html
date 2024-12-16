@@ -31,6 +31,10 @@
         Adresse email
         <input type="email" name="email" id="email" />
       </label>
+      <label for="gps">
+        Coordonnées
+        <input type="text" name="gps" id="gps" />
+      </label>
       <input type="submit" id="submit" value="Créer le compte" />
     </form>
 
@@ -39,20 +43,37 @@
       document
         .querySelector("#signup-form")
         .addEventListener("submit", function (event) {
+          event.preventDefault();
           // récupérer les valeurs du formulaire
           const username = document.querySelector("#username").value;
           const password = document.querySelector("#password").value;
           const email = document.querySelector("#email").value;
+          const gps = document.querySelector("#gps").value;
 
           // stocker dans un dictionnaire (temporairement)
           const userInfo = {
             username: username,
-            pasword: password,
+            password: password,
             email: email,
+            gps: gps,
           };
+          console.log(userInfo);
 
           // envoyer le dictionnaire à l'API
-          fetch("http://localhost:3000/signup");
+          fetch("http://localhost:3000/signup-user", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json", // MimeType (ex: text/html)
+            },
+            body: JSON.stringify(userInfo),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Response :", data);
+            })
+            .catch((error) => {
+              console.error("Error : ", error);
+            });
         });
 
       // Côté client (frontend, navigateur) : html, css, js pour la manipulation du dom
