@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calcul de la résolution spatiale</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        font-size: 14px;
+      }
+      th,
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        text-align: left;
+      }
+      td {
+        text-align: center;
+        vertical-align: middle;
+      }
+      .detection-ja {
+        background-color: lightgreen;
+      }
+      .detection-nein {
+        background-color: lightcoral;
+      }
+      td:nth-child(n + 3) {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      Calcul de la résolution spatiale pour la détection de fissures (0,2 mm)
+    </h1>
+    <form id="camera-infos">
+      <input
+        type="text"
+        id="sensor-width-pixels"
+        placeholder="Sensor width pixels"
+      />
+      <input
+        type="text"
+        id="sensor-height-pixels"
+        placeholder="Sensor height pixels"
+      />
+      <input
+        type="text"
+        id="pixel-size-micron"
+        placeholder="Pixel size (micron)"
+      />
+      <input type="text" id="fissure-size-mm" placeholder="Fissure size (mm)" />
+
+      <p>Objectif 1</p>
+      <input type="text" id="lens-1-name" placeholder="Nom" />
+      <input type="text" id="lens-1-hfov" placeholder="Horizontal Fov" />
+      <input type="text" id="lens-1-vfov" placeholder="Vertical Fov" />
+
+      <p>Objectif 2</p>
+      <input type="text" id="lens-2-name" placeholder="Nom" />
+      <input type="text" id="lens-2-hfov" placeholder="Horizontal Fov" />
+      <input type="text" id="lens-2-vfov" placeholder="Vertical Fov" />
+
+      <p>Objectif 3</p>
+      <input type="text" id="lens-3-name" placeholder="Nom" />
+      <input type="text" id="lens-3-hfov" placeholder="Horizontal Fov" />
+      <input type="text" id="lens-3-vfov" placeholder="Vertical Fov" />
+
+      <input type="submit" value="Valider" />
+    </form>
+    <div id="tableContainer"></div>
+
+    <script>
+      const data = {
+        phase_one_iXM_GS120: {
+          name: "Phase One iXM-GS120",
+          settings: {
+            sensorWidthPixels: 12768,
+            sensorHeightPixels: 9564,
+            pixelSizeMicron: 3.45,
+            fissureSizeMM: 0.1,
+          },
+          lenses: [
+            { name: "80mm AF", hFov: 26.4, vFov: 19.7 },
+            { name: "150mm AF", hFov: 14.0, vFov: 10.5 },
+            { name: "300mm AF", hFov: 7.1, vFov: 5.3 },
+          ],
+        },
+      };
+
+      document
+        .querySelector("#camera-infos")
+        .addEventListener("submit", (event) => {
+          event.preventDefault();
+          const sensorWidthPixels = parseInt(
+            document.querySelector("#sensor-width-pixels").value
+          );
+          const sensorHeightPixels = parseInt(
+            document.querySelector("#sensor-height-pixels").value
+          );
+          const pixelSizeMicron = parseFloat(
+            document.querySelector("#pixel-size-micron").value
+          );
+          const fissureSizeMM = parseFloat(
+            document.querySelector("#fissure-size-mm").value
+          );
+
+          const lens1Name = document.querySelector("#lens-1-name").value;
+          const lens1HFov = document.querySelector("#lens-1-hfov").value;
+          const lens1VFov = document.querySelector("#lens-1-vfov").value;
+
+          const lens2Name = document.querySelector("#lens-2-name").value;
+          const lens2HFov = document.querySelector("#lens-2-hfov").value;
+          const lens2VFov = document.querySelector("#lens-2-vfov").value;
+
+          const lens3Name = document.querySelector("#lens-3-name").value;
+          const lens3HFov = document.querySelector("#lens-3-hfov").value;
+          const lens3VFov = document.querySelector("#lens-3-vfov").value;
+
+          console.log(
+            sensorWidthPixels,
+            sensorHeightPixels,
+            pixelSizeMicron,
+            fissureSizeMM,
+            lens1Name,
+            lens1HFov,
+            lens1VFov,
+            lens2Name,
+            lens2HFov,
+            lens2VFov,
+            lens3Name,
+            lens3HFov,
+            lens3VFov
+          );
+
+          // Fonction de calcul de la résolution spatiale
+          function calculateSpatialResolution(distance, hFov, vFov) {
+            const imageWidth = distance * Math.tan((hFov * Math.PI) / 180);
+            const imageHeight = distance * Math.tan((vFov * Math.PI) / 180);
+
+            const pixelWidthOnObjectMM =
+              (imageWidth * 1000) / sensorWidthPixels;
+            const pixelHeightOnObjectMM =
+              (imageHeight * 1000) / sensorHeightPixels;
+
+            const pixelWidthRatio = pixelWidthOnObjectMM / fissureSizeMM;
+            const pixelHeightRatio = pixelHeightOnObjectMM / fissureSizeMM;
+
+            //Calcul des dimensions du champ de vue sur la façade
+            const fieldWidthCm = imageWidth * 100;
+            const fieldHeightCm = imageHeight * 100;
+
+            return {
+              pixelWidth: pixelWidthOnObjectMM,
+              pixelHeight: pixelHeightOnObjectMM,
+              pixelWidthRatio: pixelWidthRatio,
+              pixelHeightRatio: pixelHeightRatio,
+              detectionPossible: pixelWidthRatio <= 1 && pixelHeightRatio <= 1,
+              fieldWidthCm: fieldWidthCm,
+              fieldHeightCm: fieldHeightCm,
+            };
+          }
+
+          // Objectifs et leurs angles de vue hFov (champ de vue horizontal) et vFov (champ de vue vertical)
+          const objectifs = [
+            {
+              name: lens1Name,
+              hFov: parseFloat(lens1HFov),
+              vFov: parseFloat(lens1VFov),
+            },
+            {
+              name: lens2Name,
+              hFov: parseFloat(lens2HFov),
+              vFov: parseFloat(lens2VFov),
+            },
+            {
+              name: lens3Name,
+              hFov: parseFloat(lens3HFov),
+              vFov: parseFloat(lens3VFov),
+            },
+          ];
+
+          // Distances de prise de vue
+          const distances = [
+            1, 1.3, 1.6, 2, 2.3, 3, 4, 5, 5.1, 5.2, 6, 7, 8, 9, 10, 10.3, 11,
+            12, 13, 14, 15, 20, 20.3, 21, 25,
+          ]; // en mètres
+
+          // Création du tableau
+          let tableHTML = `<table>
+        <thead>
+          <tr>
+            <th>Objectif</th>
+            <th>Distance (m)</th>
+            <th>Résolution spatiale (Largeur) mm</th>
+            <th>Résolution spatiale (Hauteur) mm</th>
+            <th>Rapport Pixel/Fissure (Largeur)</th>
+            <th>Rapport Pixel/Fissure (Hauteur)</th>
+            <th>Détection possible ?</th>
+            <th>Largeur champ de vue (cm)</th>
+            <th>Hauteur champ de vue (cm)</th>
+
+          </tr>
+        </thead>
+        <tbody>`;
+
+          objectifs.forEach((objectif) => {
+            distances.forEach((distance) => {
+              const resultat = calculateSpatialResolution(
+                distance,
+                objectif.hFov,
+                objectif.vFov
+              );
+              const detectionPossible = resultat.detectionPossible
+                ? "Oui"
+                : "Non";
+              const cssClass =
+                detectionPossible === "Oui" ? "detection-ja" : "detection-nein";
+
+              tableHTML += `<tr>
+            <td>${objectif.name}</td>
+            <td>${distance}</td>
+            <td class="${cssClass}">${resultat.pixelWidth.toFixed(4)}</td>
+            <td class="${cssClass}">${resultat.pixelHeight.toFixed(4)}</td>
+            <td class="${cssClass}">${resultat.pixelWidthRatio.toFixed(2)}</td>
+            <td class="${cssClass}">${resultat.pixelHeightRatio.toFixed(2)}</td>
+            <td class="${cssClass}">${detectionPossible}</td>
+            <td class="${cssClass}">${resultat.fieldWidthCm.toFixed(2)}</td>
+            <td class="${cssClass}">${resultat.fieldHeightCm.toFixed(2)}</td>
+          </tr>`;
+            });
+          });
+
+          tableHTML += `</tbody></table>`;
+
+          document.getElementById("tableContainer").innerHTML = tableHTML;
+        });
+    </script>
+  </body>
+</html>
