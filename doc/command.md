@@ -1,8 +1,13 @@
 # POWERSHELL
 
 - cd _chemin_ : Changer de dossier
+- cd .. : Revenir en arrière (dossier parent)
 - CTRL+C / q : Interrompre le programme en cours
 - CTRL+Clic (sur un lien) : Suivre le lien
+
+# VS Code (François-Xavier)
+
+- Alt+P : Commenter le code sélectionné
 
 # GIT
 

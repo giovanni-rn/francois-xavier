@@ -26,12 +26,14 @@ app.post("/signup-user", function (req, res) {
   );
   res.status(200).json({ Message: "User created" }); // Renvoyer un message de confirmation au navigateur
 });
+
 app.post("/api/projects", (req, res) => {
   const newProject = req.body;
   projects.push(newProject);
   console.log("New project added:", newProject);
   res.status(201).json({ message: "Project added successfully" });
 });
+
 server.listen(3000, () => {
   console.log("server running at http://localhost:3000");
 });
