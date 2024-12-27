@@ -5,9 +5,11 @@ variableDynamique = "a changé"
 
 /* Règle de noms
 - Un seul mot, pas d'espace
-- Premier caractère doit être : lettre minuscule, "_", "$"
+- Premier caractère doit être : lettre en minuscule ou "_" ou "$"
 - Le nom doit être utilisé pour une seule variable/fonction dans la même portée
 */
+
+// `Exemple de ${texte} dynamique`
 
 // Casses
 const sentence = "Ceci est une phrase"

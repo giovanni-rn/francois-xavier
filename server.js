@@ -14,17 +14,9 @@ app.get("/test", function (req, res) {
 
 // ex: http://localhost:3000/signup-user
 app.post("/signup-user", function (req, res) {
-  console.log(
-    req.originalUrl,
-    req.method,
-    req.headers,
-    req.ip,
-    req.host,
-    req.path,
-    req.statusCode,
-    req.body
-  );
-  res.status(200).json({ Message: "User created" }); // Renvoyer un message de confirmation au navigateur
+  // console.log(req.originalUrl, req.method, req.ip, req.body);
+  // const msg = "User " + req.body.username + " created"
+  res.status(201).json({ message: `User ${req.body.username} created` }); // Renvoyer un message de confirmation au navigateur
 });
 
 app.post("/api/projects", (req, res) => {
