@@ -18,6 +18,7 @@
   "author": "Oriano DEV et François-Xavier",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "sqlite3": "^5.1.7"
   }
 }

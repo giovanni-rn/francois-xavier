@@ -2,12 +2,14 @@
 
 - cd _chemin_ : Changer de dossier
 - cd .. : Revenir en arrière (dossier parent)
-- CTRL+C / q : Interrompre le programme en cours
-- CTRL+Clic (sur un lien) : Suivre le lien
+- Ctrl + clic (sur un lien) : Suivre le lien
+- Ctrl + C / q : Interrompre le programme en cours
+- ctrl + C ou simplement la lettre q interrompre le programme en cours où sortir du log
 
 # VS Code (François-Xavier)
 
-- Alt+P : Commenter le code sélectionné
+- Alt + P : Commenter le code sélectionné
+- Alt + Z permet d'adapter la longueur des lignes de code à la fenêtre de visualisation
 
 # GIT
 
@@ -20,7 +22,7 @@
 - git status : Informations sur le commit en cours
 - git log : Historique des commits (Appuyer sur "Enter" jusqu'à "END")
 
-# pour télécharger "pull"
+## pour télécharger "pull"
 
 - git fetch _origin_ : Vérifier la nouvelle version depuis GitHub
 - git pull _origin_ _main_ : Télécharger le projet
@@ -29,6 +31,17 @@
 
 - git reset --hard _origin_/_main_ : (!) Réinitialiser le code local pour correspondre au répertoire distant
 - git reset _hash_ --hard : Restaurer un commit précis à partir de son ID (hash)
+
+- hash c'est le nom de l'identifiant
+
+## Vérifier : être dans le bon dossier
+
+- git status
+
+## Revenir à mon commit précédent
+
+- git reset et coller l'identifiant qui a été copié dans git log puis --hard
+- pour sortir du log q où ctrl + c
 
 # Bibliothèques NODEJS
 
@@ -43,16 +56,3 @@
 
 - \n : Ajouter un saut de ligne
 - \t : Ajouter une tabulation
-- ctrl + C où simplement la lettre q interrompre le programme en cours où sortir du log
-- ctrl + click sur http pour voir toutes les fonctions
-- alt + Z permet d'adapter la longueur des lignes de code à la fenêtre de visualisation
-- hash c'est le nom de l'identifiant
-
-# Vérifier : être dans le bon dossier
-
-- git status
-
-# Revenir à mon commit précédent
-
-- git reset et coller l'identifiant qui a été copié dans git log puis --hard
-- pour sortir du log q où ctrl + c
