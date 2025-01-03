@@ -20,7 +20,11 @@ db.serialize(() => {
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT,
     email TEXT,
-    password TEXT
+    password TEXT,
+    strasse TEXT,
+    nr INT,
+    stadt TEXT,
+    plz INT
     )
     `)
 })
@@ -47,13 +51,16 @@ app.post("/signup-user", function (req, res) {
   // console.log(req.originalUrl, req.method, req.ip, req.body);
   // const msg = "User " + req.body.username + " created"
 
-  db.run(`
-    INSERT INTO user (username, email, password)
-    VALUES (${req.body.username}, ${req.body.email}, ${req.body.password})
-    `, (err) => {
-    if (err) console.error(err.message);
-    else console.log(`Data inserted with ID: ${this.lastID}`);
-  });
+  db.run(
+    `INSERT INTO user(username, email, password) VALUES(?, ?, ?)`,
+    [req.body.username, req.body.email, req.body.password],
+    function (err) {
+      if (err) {
+        console.error(err.message);
+      } else {
+        console.log(`Data inserted with ID: ${this.lastID}`);
+      }
+    });
 
   res.status(201).json({ message: `User ${req.body.username} created.` }); // Renvoyer un message de confirmation au navigateur
 });

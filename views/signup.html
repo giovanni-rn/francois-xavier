@@ -9,10 +9,15 @@
         text-align: center;
       }
       form {
+        /* border: 1px solid red; */
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 10px;
+      }
+      label {
+        display: flex;
+        flex-direction: column;
       }
     </style>
   </head>
@@ -21,7 +26,12 @@
     <form id="signup-form">
       <label for="username">
         Nom d'utilisateur
-        <input type="text" name="username" id="username" />
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Nom d'utilisateur"
+        />
       </label>
       <label for="password">
         Mot de passe
@@ -31,20 +41,24 @@
         Adresse email
         <input type="email" name="email" id="email" />
       </label>
-      <!-- 
-      <label for="Straße">
-        Nom d'utilisateur
-        <input type="text" name="Straße" id="Straße" />
+
+      <label for="straße">
+        Straße
+        <input type="text" name="straße" id="straße" />
       </label>
-      <label for="Nr">
-        Nom d'utilisateur
-        <input type="text" name="Nr" id="Nr" />
+      <label for="nr">
+        Numéro de rue
+        <input type="text" name="nr" id="nr" />
       </label>
-      <label for="#Stadt">
-        Nom d'utilisateur
-        <input type="text" name="Stadt" id="Stadt" />
-      </label> 
-      -->
+      <label for="#stadt">
+        Ville
+        <input type="text" name="stadt" id="stadt" />
+      </label>
+      <label for="#plz">
+        Code postal
+        <input type="text" name="plz" id="plz" />
+      </label>
+
       <input type="submit" id="submit" value="Créer le compte" />
     </form>
 
@@ -59,16 +73,20 @@
           const password = document.querySelector("#password").value;
           const email = document.querySelector("#email").value;
 
-          // const straße = document.querySelector("#Straße").value;
-          // const nr = document.querySelector("#Nr").value;
-          // const stadt = document.querySelector("#Stadt").value;
-          // const plz = document.querySelector("#Plz").value;
+          const strasse = document.querySelector("#straße").value;
+          const nr = document.querySelector("#nr").value;
+          const stadt = document.querySelector("#stadt").value;
+          const plz = document.querySelector("#plz").value;
 
           // stocker dans un dictionnaire (temporairement)
           const userInfo = {
             username: username,
             password: password,
             email: email,
+            strasse: strasse,
+            nr: nr,
+            stadt: stadt,
+            plz: plz,
           };
           console.log(userInfo);
 
