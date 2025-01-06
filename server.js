@@ -11,7 +11,7 @@ const sqlite3 = require("sqlite3").verbose();
 const db = new sqlite3.Database("adt.db", (err) => {
   if (err) console.error(err);
   console.log("Connected to the DB.");
-})
+});
 
 // Créer la table des utilisateurs "User" en langage SQL (Strcutured Query Language)
 db.serialize(() => {
@@ -26,8 +26,8 @@ db.serialize(() => {
     stadt TEXT,
     plz INT
     )
-    `)
-})
+    `);
+});
 
 // Architecture MVC : Model (dB) View (Pages HTML) Controller (APIs)
 
@@ -38,7 +38,6 @@ app.use(express.static(join(__dirname))); // ex: http://localhost:3000/*.html
 
 // Traiter les données au format JSON
 app.use(express.json());
-
 
 // API ENDPOINTS
 // ex: http://localhost:3000/test
@@ -52,15 +51,24 @@ app.post("/signup-user", function (req, res) {
   // const msg = "User " + req.body.username + " created"
 
   db.run(
-    `INSERT INTO user(username, email, password) VALUES(?, ?, ?)`,
-    [req.body.username, req.body.email, req.body.password],
+    `INSERT INTO user(username, email, password, strasse, nr, stadt, plz) VALUES(?, ?, ?, ?, ?, ?, ?)`,
+    [
+      req.body.username,
+      req.body.email,
+      req.body.password,
+      req.body.strasse,
+      req.body.nr,
+      req.body.stadt,
+      req.body.plz,
+    ],
     function (err) {
       if (err) {
         console.error(err.message);
       } else {
         console.log(`Data inserted with ID: ${this.lastID}`);
       }
-    });
+    }
+  );
 
   res.status(201).json({ message: `User ${req.body.username} created.` }); // Renvoyer un message de confirmation au navigateur
 });

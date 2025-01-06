@@ -30,7 +30,7 @@
 - git branch -M _main_ : Renommer la branche actuelle
 
 - git reset --hard _origin_/_main_ : (!) Réinitialiser le code local pour correspondre au répertoire distant
-- git reset _hash_ --hard : Restaurer un commit précis à partir de son ID (hash)
+- git reset hash --hard : Restaurer un commit précis à partir de son ID (hash)
 
 - hash c'est le nom de l'identifiant
 
