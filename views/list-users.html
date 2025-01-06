@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Liste des utilisateurs</h1>
+    <p id="status">Pas commencée</p>
+  </body>
+  <script>
+    const statusText = document.querySelector("#status");
+
+    // Essaie d'afficher une promesse "pending", en cours
+    // const result = fetch("http://localhost:3000/list-users");
+    // console.log(result);
+
+    // Afficher une promesse après qu'elle a chargé
+
+    fetch("http://localhost:3000/list-users")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Response :", data);
+      });
+  </script>
+</html>

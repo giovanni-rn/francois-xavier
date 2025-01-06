@@ -13,7 +13,7 @@ const db = new sqlite3.Database("adt.db", (err) => {
   console.log("Connected to the DB.");
 });
 
-// Créer la table des utilisateurs "User" en langage SQL (Strcutured Query Language)
+// Créer la table des utilisateurs "user" en langage SQL (Strcutured Query Language)
 db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS user (
@@ -29,8 +29,6 @@ db.serialize(() => {
     `);
 });
 
-// Architecture MVC : Model (dB) View (Pages HTML) Controller (APIs)
-
 // MIDDLEWARE (Avant APIs)
 // app.use() sert à utiliser un middleware, càd vérifiée avant les APIs
 // Renvoie les ressources statiques destinées à être exécutées sur le navigateur (client) (ex. html, css, img, fonts)
@@ -39,11 +37,28 @@ app.use(express.static(join(__dirname))); // ex: http://localhost:3000/*.html
 // Traiter les données au format JSON
 app.use(express.json());
 
+
 // API ENDPOINTS
 // ex: http://localhost:3000/test
 app.get("/test", function (req, res) {
   res.send("🐔");
 });
+
+
+
+// API sur les user
+app.get("/list-users", function (req, res) {
+  db.all("SELECT * FROM user", [], (err, rows) => {
+    if (err) {
+      console.error(err.message)
+      res.status(500).json({ message: "Unable to select users." })
+    } else {
+      console.log(rows);
+      res.status(200).json(JSON.stringify(rows))
+    }
+  })
+})
+
 
 // ex: http://localhost:3000/signup-user
 app.post("/signup-user", function (req, res) {
@@ -79,6 +94,7 @@ app.post("/api/projects", (req, res) => {
   console.log("New project added:", newProject);
   res.status(201).json({ message: "Project added successfully" });
 });
+
 
 // LANCER LE SERVEUR
 // cette ligne permet d'écouter un port sur le serveur (le client se trouvant sur son navigateur)
