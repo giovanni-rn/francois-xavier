@@ -2,6 +2,7 @@
 
 - cd _chemin_ : Changer de dossier
 - cd .. : Revenir en arrière (dossier parent)
+- cd ../nom du dossier
 - Ctrl + clic (sur un lien) : Suivre le lien
 - Ctrl + C / q : Interrompre le programme en cours
 - ctrl + C ou simplement la lettre q interrompre le programme en cours où sortir du log
