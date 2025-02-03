@@ -54,6 +54,8 @@
 - express : Framework minimaliste pour créer des applications web
 
 # Gestion des bibliothèque (ex: express)
+
+- Site de référence : https://www.npmjs.com/
 - Installer une bibliothèque : npm install express
 - Installer la dernière version : npm install express@latest
 - Mettre à jour : npm upgrade express
