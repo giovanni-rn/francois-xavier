@@ -22,6 +22,8 @@
 
 - git status : Informations sur le commit en cours
 - git log : Historique des commits (Appuyer sur "Enter" jusqu'à "END")
+- git remote add origin _lien_ : Ajoute un lien GitHub
+- git remote get-url origin : Renvoie le lien GitHub
 
 ## pour télécharger "pull"
 
