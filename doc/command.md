@@ -53,6 +53,12 @@
 - node:path : Outils pour gérer les chemins d'accès aux fichiers
 - express : Framework minimaliste pour créer des applications web
 
+# Gestion des bibliothèque (ex: express)
+- Installer une bibliothèque : npm install express
+- Installer la dernière version : npm install express@latest
+- Mettre à jour : npm upgrade express
+- Installer les bibliothèques listées dans package.json : npm install (ou npm i)
+
 # Carectères spéciaux JS
 
 - \n : Ajouter un saut de ligne
